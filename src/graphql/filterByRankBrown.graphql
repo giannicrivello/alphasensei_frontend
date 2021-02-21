@@ -1,0 +1,10 @@
+query BrownTech{
+  filterByRank(rank: "brown"){
+    title,
+    description,
+    videoLink,
+    rank,
+    category
+    
+  }
+}

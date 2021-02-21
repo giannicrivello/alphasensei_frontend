@@ -1,0 +1,10 @@
+query BlackTech{
+  filterByRank(rank: "black"){
+    title,
+    description,
+    videoLink,
+    rank,
+    category
+    
+  }
+}

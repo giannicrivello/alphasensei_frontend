@@ -1,0 +1,9 @@
+query getAllTech {
+    techniques {
+        title,
+        description,
+        videoLink,
+        category,
+        rank
+    }
+}

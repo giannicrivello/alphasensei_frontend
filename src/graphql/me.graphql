@@ -1,0 +1,8 @@
+query Me {
+  me {
+    firstName
+    email
+    myRank
+    gender
+  }
+}
