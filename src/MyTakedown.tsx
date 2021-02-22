@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from 'semantic-ui-react';
 import { useFilterByRankBlackAndTakedownQuery } from './generated/graphql';
 interface Props {
 
@@ -7,7 +8,7 @@ interface Props {
 export const MyTakedown: React.FC<Props> = () => {
     const{data} = useFilterByRankBlackAndTakedownQuery();
 
-  const random1 = data?.filterByRank[Math.round(Math.random() * data.filterByRank.length)]
+     const random1 = data?.filterByRank[Math.round(Math.random() * data.filterByRank.length)]
   
 
 
@@ -21,9 +22,10 @@ export const MyTakedown: React.FC<Props> = () => {
         <h1>My Takedowns</h1>
         <li>{random1?.title}</li>
         <li>{random1?.description}</li>
-        <li>{random1?.videoLink}</li>
+        <img src={random1?.videoLink} />
         <li>{random1?.rank}</li>
         <li>{random1?.category}</li>
+        <Button> Log Drill </Button>
       </div>
     </>
     );

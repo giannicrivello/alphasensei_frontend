@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState } from 'react';
+import { Button } from 'semantic-ui-react';
 import { useFilterByRankBlackAndGuardQuery } from './generated/graphql';
 
 interface Props {
@@ -7,8 +9,9 @@ interface Props {
 
 export const MyGuard: React.FC<Props> = () => {
     const{data} = useFilterByRankBlackAndGuardQuery();
+    const random1 = data?.filterByRank[Math.round(Math.random() * data.filterByRank.length)]
+    const [state, setState] = useState('')
 
-  const random1 = data?.filterByRank[Math.round(Math.random() * data.filterByRank.length)]
   
 
 
@@ -22,7 +25,7 @@ export const MyGuard: React.FC<Props> = () => {
         <h1>My Guard</h1>
         <li>{random1?.title}</li>
         <li>{random1?.description}</li>
-        <li>{random1?.videoLink}</li>
+        <img src={random1?.videoLink} />
         <li>{random1?.rank}</li>
         <li>{random1?.category}</li>
       </div>

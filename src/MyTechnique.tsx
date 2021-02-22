@@ -19,14 +19,14 @@ export const MyPassing: React.FC<Props> = () => {
 
     return (
       <>
-      <div>
+      <form>
         <h1>My Passes</h1>
         <li>{random1?.title}</li>
         <li>{random1?.description}</li>
-        <li>{random1?.videoLink}</li>
+        <img src={random1?.videoLink} />
         <li>{random1?.rank}</li>
         <li>{random1?.category}</li>
-      </div>
+      </form>
     </>
     );
 }
