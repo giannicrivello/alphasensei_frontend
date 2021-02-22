@@ -1,0 +1,10 @@
+query filterByRankBlackAndTakedown{
+  filterByRank(rank: "black", category: "takedown") {
+    title,
+    description,
+    videoLink,
+    rank,
+    category
+    
+  }
+}

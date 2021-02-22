@@ -1,0 +1,10 @@
+query filterByRankBlackAndGuard{
+  filterByRank(rank: "black", category: "guard") {
+    title,
+    description,
+    videoLink,
+    rank,
+    category
+    
+  }
+}

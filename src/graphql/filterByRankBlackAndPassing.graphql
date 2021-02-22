@@ -1,0 +1,10 @@
+query filterByRankBlackAndPassing{
+  filterByRank(rank: "black", category: "passing") {
+    title,
+    description,
+    videoLink,
+    rank,
+    category
+    
+  }
+}

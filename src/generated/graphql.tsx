@@ -28,6 +28,7 @@ export type Query = {
 
 
 export type QueryFilterByRankArgs = {
+  category: Scalars['String'];
   rank: Scalars['String'];
 };
 
@@ -130,10 +131,10 @@ export type LoginResponse = {
   user: User;
 };
 
-export type BlackTechQueryVariables = Exact<{ [key: string]: never; }>;
+export type FilterByRankBlackAndGuardQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BlackTechQuery = (
+export type FilterByRankBlackAndGuardQuery = (
   { __typename?: 'Query' }
   & { filterByRank: Array<(
     { __typename?: 'Technique' }
@@ -141,10 +142,21 @@ export type BlackTechQuery = (
   )> }
 );
 
-export type BrownTechQueryVariables = Exact<{ [key: string]: never; }>;
+export type FilterByRankBlackAndPassingQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BrownTechQuery = (
+export type FilterByRankBlackAndPassingQuery = (
+  { __typename?: 'Query' }
+  & { filterByRank: Array<(
+    { __typename?: 'Technique' }
+    & Pick<Technique, 'title' | 'description' | 'videoLink' | 'rank' | 'category'>
+  )> }
+);
+
+export type FilterByRankBlackAndTakedownQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FilterByRankBlackAndTakedownQuery = (
   { __typename?: 'Query' }
   & { filterByRank: Array<(
     { __typename?: 'Technique' }
@@ -209,9 +221,9 @@ export type RegisterMutation = (
 );
 
 
-export const BlackTechDocument = gql`
-    query BlackTech {
-  filterByRank(rank: "black") {
+export const FilterByRankBlackAndGuardDocument = gql`
+    query filterByRankBlackAndGuard {
+  filterByRank(rank: "black", category: "guard") {
     title
     description
     videoLink
@@ -222,32 +234,32 @@ export const BlackTechDocument = gql`
     `;
 
 /**
- * __useBlackTechQuery__
+ * __useFilterByRankBlackAndGuardQuery__
  *
- * To run a query within a React component, call `useBlackTechQuery` and pass it any options that fit your needs.
- * When your component renders, `useBlackTechQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useFilterByRankBlackAndGuardQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFilterByRankBlackAndGuardQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useBlackTechQuery({
+ * const { data, loading, error } = useFilterByRankBlackAndGuardQuery({
  *   variables: {
  *   },
  * });
  */
-export function useBlackTechQuery(baseOptions?: Apollo.QueryHookOptions<BlackTechQuery, BlackTechQueryVariables>) {
-        return Apollo.useQuery<BlackTechQuery, BlackTechQueryVariables>(BlackTechDocument, baseOptions);
+export function useFilterByRankBlackAndGuardQuery(baseOptions?: Apollo.QueryHookOptions<FilterByRankBlackAndGuardQuery, FilterByRankBlackAndGuardQueryVariables>) {
+        return Apollo.useQuery<FilterByRankBlackAndGuardQuery, FilterByRankBlackAndGuardQueryVariables>(FilterByRankBlackAndGuardDocument, baseOptions);
       }
-export function useBlackTechLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlackTechQuery, BlackTechQueryVariables>) {
-          return Apollo.useLazyQuery<BlackTechQuery, BlackTechQueryVariables>(BlackTechDocument, baseOptions);
+export function useFilterByRankBlackAndGuardLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilterByRankBlackAndGuardQuery, FilterByRankBlackAndGuardQueryVariables>) {
+          return Apollo.useLazyQuery<FilterByRankBlackAndGuardQuery, FilterByRankBlackAndGuardQueryVariables>(FilterByRankBlackAndGuardDocument, baseOptions);
         }
-export type BlackTechQueryHookResult = ReturnType<typeof useBlackTechQuery>;
-export type BlackTechLazyQueryHookResult = ReturnType<typeof useBlackTechLazyQuery>;
-export type BlackTechQueryResult = Apollo.QueryResult<BlackTechQuery, BlackTechQueryVariables>;
-export const BrownTechDocument = gql`
-    query BrownTech {
-  filterByRank(rank: "brown") {
+export type FilterByRankBlackAndGuardQueryHookResult = ReturnType<typeof useFilterByRankBlackAndGuardQuery>;
+export type FilterByRankBlackAndGuardLazyQueryHookResult = ReturnType<typeof useFilterByRankBlackAndGuardLazyQuery>;
+export type FilterByRankBlackAndGuardQueryResult = Apollo.QueryResult<FilterByRankBlackAndGuardQuery, FilterByRankBlackAndGuardQueryVariables>;
+export const FilterByRankBlackAndPassingDocument = gql`
+    query filterByRankBlackAndPassing {
+  filterByRank(rank: "black", category: "passing") {
     title
     description
     videoLink
@@ -258,29 +270,65 @@ export const BrownTechDocument = gql`
     `;
 
 /**
- * __useBrownTechQuery__
+ * __useFilterByRankBlackAndPassingQuery__
  *
- * To run a query within a React component, call `useBrownTechQuery` and pass it any options that fit your needs.
- * When your component renders, `useBrownTechQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useFilterByRankBlackAndPassingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFilterByRankBlackAndPassingQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useBrownTechQuery({
+ * const { data, loading, error } = useFilterByRankBlackAndPassingQuery({
  *   variables: {
  *   },
  * });
  */
-export function useBrownTechQuery(baseOptions?: Apollo.QueryHookOptions<BrownTechQuery, BrownTechQueryVariables>) {
-        return Apollo.useQuery<BrownTechQuery, BrownTechQueryVariables>(BrownTechDocument, baseOptions);
+export function useFilterByRankBlackAndPassingQuery(baseOptions?: Apollo.QueryHookOptions<FilterByRankBlackAndPassingQuery, FilterByRankBlackAndPassingQueryVariables>) {
+        return Apollo.useQuery<FilterByRankBlackAndPassingQuery, FilterByRankBlackAndPassingQueryVariables>(FilterByRankBlackAndPassingDocument, baseOptions);
       }
-export function useBrownTechLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BrownTechQuery, BrownTechQueryVariables>) {
-          return Apollo.useLazyQuery<BrownTechQuery, BrownTechQueryVariables>(BrownTechDocument, baseOptions);
+export function useFilterByRankBlackAndPassingLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilterByRankBlackAndPassingQuery, FilterByRankBlackAndPassingQueryVariables>) {
+          return Apollo.useLazyQuery<FilterByRankBlackAndPassingQuery, FilterByRankBlackAndPassingQueryVariables>(FilterByRankBlackAndPassingDocument, baseOptions);
         }
-export type BrownTechQueryHookResult = ReturnType<typeof useBrownTechQuery>;
-export type BrownTechLazyQueryHookResult = ReturnType<typeof useBrownTechLazyQuery>;
-export type BrownTechQueryResult = Apollo.QueryResult<BrownTechQuery, BrownTechQueryVariables>;
+export type FilterByRankBlackAndPassingQueryHookResult = ReturnType<typeof useFilterByRankBlackAndPassingQuery>;
+export type FilterByRankBlackAndPassingLazyQueryHookResult = ReturnType<typeof useFilterByRankBlackAndPassingLazyQuery>;
+export type FilterByRankBlackAndPassingQueryResult = Apollo.QueryResult<FilterByRankBlackAndPassingQuery, FilterByRankBlackAndPassingQueryVariables>;
+export const FilterByRankBlackAndTakedownDocument = gql`
+    query filterByRankBlackAndTakedown {
+  filterByRank(rank: "black", category: "takedown") {
+    title
+    description
+    videoLink
+    rank
+    category
+  }
+}
+    `;
+
+/**
+ * __useFilterByRankBlackAndTakedownQuery__
+ *
+ * To run a query within a React component, call `useFilterByRankBlackAndTakedownQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFilterByRankBlackAndTakedownQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFilterByRankBlackAndTakedownQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFilterByRankBlackAndTakedownQuery(baseOptions?: Apollo.QueryHookOptions<FilterByRankBlackAndTakedownQuery, FilterByRankBlackAndTakedownQueryVariables>) {
+        return Apollo.useQuery<FilterByRankBlackAndTakedownQuery, FilterByRankBlackAndTakedownQueryVariables>(FilterByRankBlackAndTakedownDocument, baseOptions);
+      }
+export function useFilterByRankBlackAndTakedownLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilterByRankBlackAndTakedownQuery, FilterByRankBlackAndTakedownQueryVariables>) {
+          return Apollo.useLazyQuery<FilterByRankBlackAndTakedownQuery, FilterByRankBlackAndTakedownQueryVariables>(FilterByRankBlackAndTakedownDocument, baseOptions);
+        }
+export type FilterByRankBlackAndTakedownQueryHookResult = ReturnType<typeof useFilterByRankBlackAndTakedownQuery>;
+export type FilterByRankBlackAndTakedownLazyQueryHookResult = ReturnType<typeof useFilterByRankBlackAndTakedownLazyQuery>;
+export type FilterByRankBlackAndTakedownQueryResult = Apollo.QueryResult<FilterByRankBlackAndTakedownQuery, FilterByRankBlackAndTakedownQueryVariables>;
 export const GetAllTechDocument = gql`
     query getAllTech {
   techniques {
@@ -417,16 +465,7 @@ export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, Regis
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
- * @param baseOptions options tquery BlackTech{
-  filterByRank(rank: "black"){
-    title,
-    description,
-    videoLink,
-    rank,
-    category
-    
-  }
-}hat will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
  * const [registerMutation, { data, loading, error }] = useRegisterMutation({

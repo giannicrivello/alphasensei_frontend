@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu } from 'semantic-ui-react'
+import { Button, Menu } from 'semantic-ui-react'
 import { setAcessToken } from './accessToken';
-import { BrownTech } from './BrownTech';
 import { useMeQuery } from './generated/graphql';
-import { MyTechnique } from './MyTechnique';
+import { MyGuard } from './MyGuard';
+import { MyPassing } from './MyTechnique';
+import { MyTakedown } from './MyTakedown';
+import { LoneSchemaDefinitionRule } from 'graphql';
 
 
 export const Header: React.FC = () => {
@@ -12,16 +14,26 @@ export const Header: React.FC = () => {
     //extra login in log in page
     const {data, loading} =useMeQuery();
 
+    function refresh() {
+        window.location.reload();
+    }
+
 
     if (!loading && data && data.me && data.me.myRank == "black"){
         return (
             <div>
-                <MyTechnique />
+                <MyPassing/>
+                <MyGuard />
+                <MyTakedown />
+                <Button onClick={refresh}>refresh</Button>
+                            
             </div>
         )
     } else if (!loading && data &&data.me && data.me.myRank == "brown" ){
         return (
-            <BrownTech />
+            <div>
+                this is where brwon tech goes
+            </div>
         )   
     } else {
         console.log('it didnt work')
