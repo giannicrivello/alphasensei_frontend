@@ -1,0 +1,13 @@
+mutation PostToLog(
+    $title: String!, 
+    $rank: String!, 
+    $category: String!, 
+    $user_id: String!,
+    ) {
+    postToUser(
+      title: $title,
+      rank: $rank,
+      category: $category,
+      user_id: $user_id
+      )
+}

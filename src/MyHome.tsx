@@ -1,6 +1,9 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useGetAllTechQuery, useMeQuery } from './generated/graphql';
-import { Header } from './Header';
+import { MyLogs } from './MyLogs';
+import { Nav } from './Nav';
+import { Workouts } from './Workouts';
 
 
 interface Props {
@@ -8,40 +11,21 @@ interface Props {
 }
 
 export const MyHome: React.FC<Props> = () => {
+    
+    
+    return (
+        <>
+        <BrowserRouter>
+        <Nav />
+        <Switch>
+            <Route exact path='/' component={Workouts}/>
+            <Route exact path='/mylogs' component={MyLogs}/>
 
-    const {data} = useGetAllTechQuery(); 
-    const response = data?.techniques[1]
-
-    if(!data) {
-        return null
-    }
-
-
-
-
-        return (
-            <>
-            <Header />
-                {/* {response?.map(x => {
-                    return (
-                        <div>
-                            <ul>
-                                <li>Title : {x.title}</li>
-                                <li> Description: {x.description}</li>
-                                <img src={x.videoLink} />
-                                <li>Category: {x.category}</li>
-                                <li>Rank: {x.rank}</li>
-
-                            </ul>
-                        </div>
-                    )
-                })} */}
-                {/* <li>{response?.title}</li>
-                <li>{response?.description}</li> */}
-
-
-
-            </>
+            
+        </Switch>
+        </BrowserRouter>
+           
+        </>
 
         );
 }

@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { useFilterByRankBlackAndTakedownQuery, useMeQuery, usePostToLogMutation } from './generated/graphql';
+import {useFilterByRankBlackAndPassingQuery, useMeQuery, usePostToLogMutation} from './generated/graphql'
+
+import React, { useEffect, useState } from 'react';
+
 interface Props {
 
 }
 
-export const MyTakedown: React.FC<Props> = () => {
-  const{data} = useFilterByRankBlackAndTakedownQuery();
+export const MyPassing: React.FC<Props> = () => {
   const [postToUser] = usePostToLogMutation();
+  const {data} = useFilterByRankBlackAndPassingQuery();
   const response1 = data?.filterByRank[Math.round(Math.random() * data.filterByRank.length)]
   const [tech, setTech] = useState<any>('');
   const [title, setTitle] = useState<any>('');
@@ -40,7 +42,7 @@ export const MyTakedown: React.FC<Props> = () => {
     return (
       <>
       <div>
-        <h1>My MyTakedown</h1>
+        <h1>My Passes</h1>
         <form
         onSubmit={async e => {
           e.preventDefault()

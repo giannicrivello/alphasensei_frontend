@@ -1,0 +1,8 @@
+query getLogs {
+    getLogs{
+        title,
+        rank,
+        category,
+        user_id
+    }
+}

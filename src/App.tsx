@@ -40,10 +40,8 @@ export const App: React.FC<Props> = () => {
       <BrowserRouter>
           <Redirect to='/register' />
           <Switch>
-            <Switch>
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login}/>
-            </Switch>
           </Switch>
       </BrowserRouter>
     </>

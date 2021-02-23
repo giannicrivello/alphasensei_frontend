@@ -4,12 +4,11 @@ import { Button, Menu } from 'semantic-ui-react'
 import { setAcessToken } from './accessToken';
 import { useMeQuery } from './generated/graphql';
 import { MyGuard } from './MyGuard';
-import { MyPassing } from './MyTechnique';
+import { MyPassing } from './MyPassing';
 import { MyTakedown } from './MyTakedown';
-import { LoneSchemaDefinitionRule } from 'graphql';
 
 
-export const Header: React.FC = () => {
+export const Workouts: React.FC = () => {
       //her is the me query that alllows us to pull in the user that is logging i=n
     //extra login in log in page
     const {data, loading} =useMeQuery();

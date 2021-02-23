@@ -24,6 +24,7 @@ export type Query = {
   drills: Array<Drills>;
   gifs: Array<Gif>;
   gif_to_technique: Array<Gif>;
+  getLogs: Array<Post>;
 };
 
 
@@ -44,6 +45,7 @@ export type QueryGif_To_TechniqueArgs = {
 
 export type User = {
   __typename?: 'User';
+  user_id: Scalars['Float'];
   firstName: Scalars['String'];
   lastName: Scalars['String'];
   email: Scalars['String'];
@@ -76,6 +78,14 @@ export type Gif = {
   technique: Scalars['Float'];
 };
 
+export type Post = {
+  __typename?: 'Post';
+  title: Scalars['String'];
+  rank: Scalars['String'];
+  category: Scalars['String'];
+  user_id: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   registerUser: Scalars['Boolean'];
@@ -83,6 +93,7 @@ export type Mutation = {
   registerTechnique: Technique;
   registerDrills: Array<Drills>;
   registerGifs: Array<Gif>;
+  postToUser: Scalars['Boolean'];
 };
 
 
@@ -123,6 +134,14 @@ export type MutationRegisterDrillsArgs = {
 export type MutationRegisterGifsArgs = {
   technique: Scalars['Float'];
   gif_link: Scalars['String'];
+};
+
+
+export type MutationPostToUserArgs = {
+  user_id: Scalars['String'];
+  category: Scalars['String'];
+  rank: Scalars['String'];
+  title: Scalars['String'];
 };
 
 export type LoginResponse = {
@@ -175,6 +194,17 @@ export type GetAllTechQuery = (
   )> }
 );
 
+export type GetLogsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetLogsQuery = (
+  { __typename?: 'Query' }
+  & { getLogs: Array<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'title' | 'rank' | 'category' | 'user_id'>
+  )> }
+);
+
 export type LoginMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
@@ -202,6 +232,19 @@ export type MeQuery = (
     { __typename?: 'User' }
     & Pick<User, 'firstName' | 'email' | 'myRank' | 'gender'>
   )> }
+);
+
+export type PostToLogMutationVariables = Exact<{
+  title: Scalars['String'];
+  rank: Scalars['String'];
+  category: Scalars['String'];
+  user_id: Scalars['String'];
+}>;
+
+
+export type PostToLogMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'postToUser'>
 );
 
 export type RegisterMutationVariables = Exact<{
@@ -365,6 +408,41 @@ export function useGetAllTechLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetAllTechQueryHookResult = ReturnType<typeof useGetAllTechQuery>;
 export type GetAllTechLazyQueryHookResult = ReturnType<typeof useGetAllTechLazyQuery>;
 export type GetAllTechQueryResult = Apollo.QueryResult<GetAllTechQuery, GetAllTechQueryVariables>;
+export const GetLogsDocument = gql`
+    query getLogs {
+  getLogs {
+    title
+    rank
+    category
+    user_id
+  }
+}
+    `;
+
+/**
+ * __useGetLogsQuery__
+ *
+ * To run a query within a React component, call `useGetLogsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLogsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLogsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetLogsQuery(baseOptions?: Apollo.QueryHookOptions<GetLogsQuery, GetLogsQueryVariables>) {
+        return Apollo.useQuery<GetLogsQuery, GetLogsQueryVariables>(GetLogsDocument, baseOptions);
+      }
+export function useGetLogsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLogsQuery, GetLogsQueryVariables>) {
+          return Apollo.useLazyQuery<GetLogsQuery, GetLogsQueryVariables>(GetLogsDocument, baseOptions);
+        }
+export type GetLogsQueryHookResult = ReturnType<typeof useGetLogsQuery>;
+export type GetLogsLazyQueryHookResult = ReturnType<typeof useGetLogsLazyQuery>;
+export type GetLogsQueryResult = Apollo.QueryResult<GetLogsQuery, GetLogsQueryVariables>;
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
@@ -442,6 +520,39 @@ export function useMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeQuery
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
+export const PostToLogDocument = gql`
+    mutation PostToLog($title: String!, $rank: String!, $category: String!, $user_id: String!) {
+  postToUser(title: $title, rank: $rank, category: $category, user_id: $user_id)
+}
+    `;
+export type PostToLogMutationFn = Apollo.MutationFunction<PostToLogMutation, PostToLogMutationVariables>;
+
+/**
+ * __usePostToLogMutation__
+ *
+ * To run a mutation, you first call `usePostToLogMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePostToLogMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [postToLogMutation, { data, loading, error }] = usePostToLogMutation({
+ *   variables: {
+ *      title: // value for 'title'
+ *      rank: // value for 'rank'
+ *      category: // value for 'category'
+ *      user_id: // value for 'user_id'
+ *   },
+ * });
+ */
+export function usePostToLogMutation(baseOptions?: Apollo.MutationHookOptions<PostToLogMutation, PostToLogMutationVariables>) {
+        return Apollo.useMutation<PostToLogMutation, PostToLogMutationVariables>(PostToLogDocument, baseOptions);
+      }
+export type PostToLogMutationHookResult = ReturnType<typeof usePostToLogMutation>;
+export type PostToLogMutationResult = Apollo.MutationResult<PostToLogMutation>;
+export type PostToLogMutationOptions = Apollo.BaseMutationOptions<PostToLogMutation, PostToLogMutationVariables>;
 export const RegisterDocument = gql`
     mutation Register($firstName: String!, $lastName: String!, $email: String!, $password: String!, $age: String!, $gender: String!, $myRank: String!) {
   registerUser(
