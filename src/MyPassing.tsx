@@ -57,7 +57,7 @@ export const MyPassing: React.FC<Props> = () => {
         }}
         >
         <input value={response1?.title} readOnly/>
-        <li>{response1?.videoLink}</li>
+        <img src={response1?.videoLink} />
         <input value={response1?.description} readOnly/>
         <input value={response1?.category} readOnly/>
         <input value={response1?.rank} readOnly/>

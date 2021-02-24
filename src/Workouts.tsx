@@ -6,7 +6,7 @@ import { useMeQuery } from './generated/graphql';
 import { MyGuard } from './MyGuard';
 import { MyPassing } from './MyPassing';
 import { MyTakedown } from './MyTakedown';
-
+import RecipeReviewCar from './TestCard';
 
 export const Workouts: React.FC = () => {
       //her is the me query that alllows us to pull in the user that is logging i=n
@@ -24,6 +24,7 @@ export const Workouts: React.FC = () => {
                 <MyPassing/>
                 <MyGuard />
                 <MyTakedown />
+                <RecipeReviewCar />
                 <Button onClick={refresh}>refresh</Button>
                             
             </div>
