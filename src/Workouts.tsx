@@ -6,6 +6,7 @@ import { useMeQuery } from './generated/graphql';
 import { MyGuard } from './MyGuard';
 import { MyPassing } from './MyPassing';
 import { MyTakedown } from './MyTakedown';
+import TechList from './TechList';
 import RecipeReviewCar from './TestCard';
 
 export const Workouts: React.FC = () => {
@@ -13,19 +14,10 @@ export const Workouts: React.FC = () => {
     //extra login in log in page
     const {data, loading} =useMeQuery();
 
-    function refresh() {
-        window.location.reload();
-    }
-
-
     if (!loading && data && data.me && data.me.myRank == "black"){
         return (
             <div>
-                <MyPassing/>
-                <MyGuard />
-                <MyTakedown />
-                <RecipeReviewCar />
-                <Button onClick={refresh}>refresh</Button>
+                <TechList />
                             
             </div>
         )
@@ -38,9 +30,6 @@ export const Workouts: React.FC = () => {
     } else {
         console.log('it didnt work')
     }
-
-
-
 
     return (
         <>

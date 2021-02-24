@@ -1,6 +1,10 @@
 import {useFilterByRankBlackAndPassingQuery, useMeQuery, usePostToLogMutation} from './generated/graphql'
 
 import React, { useEffect, useState } from 'react';
+import { Feed } from 'semantic-ui-react';
+
+
+
 
 interface Props {
 
@@ -62,7 +66,9 @@ export const MyPassing: React.FC<Props> = () => {
         <input value={response1?.category} readOnly/>
         <input value={response1?.rank} readOnly/>
         <button type='submit' onClick={log}>log</button>
+
         </form>
+      
       </div>
     </>
     );
