@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { useFilterByRankBlackAndTakedownQuery, useMeQuery, usePostToLogMutation } from './generated/graphql';
-=======
-import { Button } from 'semantic-ui-react';
-import { useFilterByRankBlackAndTakedownQuery } from './generated/graphql';
->>>>>>> 6e0f9ab6ba572258bc1d0c132505746058c3a024
 interface Props {
 
 }
 
 export const MyTakedown: React.FC<Props> = () => {
-<<<<<<< HEAD
   const{data} = useFilterByRankBlackAndTakedownQuery();
   const [postToUser] = usePostToLogMutation();
   const response1 = data?.filterByRank[Math.round(Math.random() * data.filterByRank.length)]
@@ -19,12 +13,6 @@ export const MyTakedown: React.FC<Props> = () => {
   const [category, setCategory] = useState<any>('');
   const [rank, setRank] = useState<any>('');
   const [user_id, setUser_id] = useState<any>('');
-=======
-    const{data} = useFilterByRankBlackAndTakedownQuery();
-
-     const random1 = data?.filterByRank[Math.round(Math.random() * data.filterByRank.length)]
-  
->>>>>>> 6e0f9ab6ba572258bc1d0c132505746058c3a024
 
   const me = useMeQuery();
   console.log(me.data?.me?.email)
@@ -52,7 +40,6 @@ export const MyTakedown: React.FC<Props> = () => {
     return (
       <>
       <div>
-<<<<<<< HEAD
         <h1>My MyTakedown</h1>
         <form
         onSubmit={async e => {
@@ -74,15 +61,6 @@ export const MyTakedown: React.FC<Props> = () => {
         <input value={response1?.rank} readOnly/>
         <button type='submit' onClick={log}>log</button>
         </form>
-=======
-        <h1>My Takedowns</h1>
-        <li>{random1?.title}</li>
-        <li>{random1?.description}</li>
-        <img src={random1?.videoLink} />
-        <li>{random1?.rank}</li>
-        <li>{random1?.category}</li>
-        <Button> Log Drill </Button>
->>>>>>> 6e0f9ab6ba572258bc1d0c132505746058c3a024
       </div>
     </>
     );

@@ -1,12 +1,5 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useFilterByRankBlackAndGuardQuery, useMeQuery, usePostToLogMutation } from './generated/graphql';
-=======
-import React from 'react';
-import { useState } from 'react';
-import { Button } from 'semantic-ui-react';
-import { useFilterByRankBlackAndGuardQuery } from './generated/graphql';
->>>>>>> 6e0f9ab6ba572258bc1d0c132505746058c3a024
 
 interface Props {
 
@@ -14,7 +7,6 @@ interface Props {
 
 export const MyGuard: React.FC<Props> = () => {
     const{data} = useFilterByRankBlackAndGuardQuery();
-<<<<<<< HEAD
     const response1 = data?.filterByRank[Math.round(Math.random() * data.filterByRank.length)]
     const [postToUser] = usePostToLogMutation();
     const [tech, setTech] = useState<any>('');
@@ -77,28 +69,3 @@ export const MyGuard: React.FC<Props> = () => {
       );
       }
     }
-=======
-    const random1 = data?.filterByRank[Math.round(Math.random() * data.filterByRank.length)]
-    const [state, setState] = useState('')
-
-  
-
-
-  if (!data) {
-    return null
-  }
-
-    return (
-      <>
-      <div>
-        <h1>My Guard</h1>
-        <li>{random1?.title}</li>
-        <li>{random1?.description}</li>
-        <img src={random1?.videoLink} />
-        <li>{random1?.rank}</li>
-        <li>{random1?.category}</li>
-      </div>
-    </>
-    );
-}
->>>>>>> 6e0f9ab6ba572258bc1d0c132505746058c3a024
