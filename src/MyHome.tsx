@@ -14,6 +14,7 @@ import { Guard1Context, Guard2Context, Guard3Context, Pass2Context, Pass3Context
 import { Workouts } from './Workouts';
 import {TakeDown2} from './TakeDown2'
 import { TakeDown3 } from './TakeDown3';
+import Search from './Search';
 
 
 interface Props {
@@ -62,6 +63,7 @@ export const MyHome: React.FC<Props> = () => {
                                  <Switch>
                                      <Route exact path='/' component={Workouts}/>
                                      <Route exact path='/mylogs' component={MyLogs}/>
+                                     <Route exact path='/search' component={Search} />
                                      {/* <Route exact path='/techlist' component={TechList}/> */}
                                      <Route exact path='/pass1' component={Pass1} />
                                      <Route exact path='/pass2' component={Pass2} />

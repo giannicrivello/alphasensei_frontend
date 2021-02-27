@@ -52,6 +52,11 @@ export const Nav: React.FC<Props> = () => {
                        </Link>  
                        </IconButton>
                        <IconButton>
+                       <Link to="/search">
+                        <Button>EXPLORE</Button>
+                       </Link>  
+                       </IconButton>
+                       <IconButton>
                        {/* <Link to="/"> */}
                         <Button color="inherit"> Log Out</Button>
                        {/* </Link>   */}

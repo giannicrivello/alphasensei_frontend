@@ -1,0 +1,20 @@
+{
+    "engineName": "test",
+    "endpointBase": "https://c3f02634614b4eb48776d25261dc7ae4.ent-search.us-central1.gcp.cloud.es.io",
+    "searchKey": "search-o7yb53r1hj4k1azjma9332tb",
+    "resultFields": [
+      "description",
+      "rank",
+      "videolink",
+      "title",
+      "category",
+      "id"
+    ],
+    "sortFields": [
+  
+    ],
+    "facets": [
+  
+    ]
+  }
+  
