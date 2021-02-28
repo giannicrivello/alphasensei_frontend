@@ -17,6 +17,8 @@ export const Login: React.FC<RouteComponentProps> = ({history}) => {
 
 
     return (
+        <>
+        <h1>Login to Alphasensei</h1>
         <Form onSubmit={async e => {
             console.log('logged in');
             const response = await login({
@@ -64,6 +66,7 @@ export const Login: React.FC<RouteComponentProps> = ({history}) => {
           </Link>
           </BrowserRouter>
         </Form>
+        </>
       )
 
 }

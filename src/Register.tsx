@@ -26,6 +26,8 @@ export const Register: React.FC<RouteComponentProps> = ({history}) => {
 
 
     return (
+      <>
+      <h1>Register for Alphasensei</h1>
       <Form
       onSubmit={async e => {
         e.preventDefault()
@@ -104,6 +106,7 @@ export const Register: React.FC<RouteComponentProps> = ({history}) => {
 
         
       </Form>
+      </>
           
     );
 }
